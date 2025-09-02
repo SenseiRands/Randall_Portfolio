@@ -1,0 +1,365 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <title>Rands</title>
+  <link href="./output.css" rel="stylesheet">
+</head>
+<body class="h-screen bg-[length:100%_100%] bg-no-repeat text-gray-100" style="background-image: url('images/background.jpg'); font-family: 'Tahoma', sans-serif;">
+    <section id="icons" class="flex flex-col items-center justify-center p-8 text-center max-w-36">
+        <div id="aboutMe" class="flex flex-col justify-center pb-6">
+            <img src="images/aboutMe.png" class="w-12 h-12 ml-3 cursor-pointer" ondblclick="openAboutMe()">
+            <div class="cursor-pointer">About Me</div>
+        </div>
+
+        <div id="projects" class="flex flex-col justify-center pb-6">
+            <img src="images/projects.png" class="w-10 h-10 ml-2 cursor-pointer" ondblclick="openProjects()">
+            <div class="cursor-pointer">Projects</div>
+        </div>
+
+        <div id="languages" class="flex flex-col justify-center pb-6">
+            <img src="images/languages.svg" class="w-12 h-12 ml-4 cursor-pointer" ondblclick="openLanguages()">
+            <div class="cursor-pointer">Languages Used</div>
+        </div>
+    </section>
+
+    <section id="startMenu" class="fixed inset-x-0 z-50 hidden w-full bottom-8">
+        <div class="flex h-[32rem] w-[26.1rem] flex-col items-start rounded-t-lg [background:linear-gradient(to_bottom,_#3D8DE9_1%,_#2865E4_25%)]">
+            <header class="px-8 py-8 text-2xl text-white">Rands</header>
+            <div class="flex h-[23rem] w-full flex-row border-b border-[#1F70D0]">
+                <div class="text-gray-900 bg-white">
+                    <ul class="p-6">
+                        <li class="flex flex-row items-center py-2">
+                            <img src="images/internetExplorer.png" class="w-8 h-8 mr-2">
+                            <div class="cursor-default">Internet Explorer</div>
+                        </li>
+                        <li class="flex flex-row items-center py-2">
+                            <img src="images/socials.png" class="w-8 h-8 mr-2">
+                            <div class="cursor-pointer">
+                                <a href="https://github.com/SenseiRands" class="text-black">GitHub</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="border-l border-[#A0C5F0] bg-[#D3E5FA] text-gray-900">
+                    <ul class="p-6 mr-4">
+                        <li class="flex flex-row items-center py-2">
+                            <img src="images/myDocuments.png" class="w-8 h-8 mr-2">
+                            <div class="cursor-default">My Documents</div>
+                        </li>
+                        <li class="flex flex-row items-center py-2">
+                            <img src="images/languages.svg" class="w-8 h-8 mr-2">
+                            <div class="cursor-default">My Computer</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fixed bottom-0 left-0 right-0 w-full">
+        <div id="taskBar" class="flex h-8 w-full items-start justify-between [background:linear-gradient(to_bottom,_#3D8DE9_10%,_#2865E4_30%)]">
+
+            <div class="flex flex-row justify-start">         
+                <div id="startButton" class="flex h-8 w-32 cursor-default flex-row items-center justify-center gap-0.5 rounded-r-lg text-xl font-semibold italic [background:linear-gradient(to_bottom,_#75B275_10%,_#3BA33B_30%)] hover:[background:linear-gradient(to_bottom,_#74C373_10%,_#3BC03B_30%)]" onclick="toggleStartMenu()">
+                    <img src="images/startButton.png" class="w-5 h-5">
+                    <div>start</div>
+                </div>
+                
+            </div>
+
+
+            <div id="timeDisplay" class="flex h-8 items-center px-4 font-mono text-sm text-white [background:linear-gradient(to_right,_#24AEEE_1%,_#1496ED_30%)]"></div>
+        </div>
+    </section>
+
+    <section id="aboutMeWindow" class="absolute flex flex-col hidden w-full h-full overflow-hidden bg-white rounded-t-lg shadow-lg max-w-96 max-h-96">
+        <div id="aboutHeader" class="flex flex-row justify-between px-1 text-white [background:linear-gradient(to_bottom,_#3D8DE9_1%,_#2865E4_35%)]">
+            <div class="flex flex-row gap-x-0.5 p-0.5">
+                <img src="images/aboutMe.png" class="w-6 h-6 mt-2">
+                <div class="mt-2 cursor-default text-start">About Me</div>
+            </div>
+            <div class="flex flex-row gap-x-0.5">
+                <button class="cursor-pointer">
+                    <img src="images/minimize.jpg" class="w-8 h-8">
+                </button>
+                
+                <button class="cursor-pointer">
+                    <img src="images/maximize.jpg" class="w-8 h-8">
+                </button>
+                
+                <button class="cursor-pointer" onclick="closeAboutMe()">
+                    <img src="images/close.jpg" class="w-8 h-8">
+                </button>
+            </div>
+        </div>
+        
+        <div class="flex-1 border-4 border-[#2865E4] p-2 text-black">
+            <div class="font-bold">Randall C. Basilio</div>
+            <div class="font-normal">As a fresh graduate with a B.S in Information Technology background, I am committed to delivering innovative and impactful solutions as a hardworking developer. With a strong foundation in software development and a passion for problem-solving, I thrive in creating efficient, user-centric applications. My dedication to continuous learning keeps me at the forefront of emerging technologies, enabling me to tackle challenges with creativity and precision.</div>
+        </div>
+    
+        <div class="absolute bottom-0 right-0 w-4 h-4 cursor-nwse-resize" data-resizer="se"></div>
+        <div class="absolute bottom-0 left-0 w-4 h-4 cursor-nesw-resize" data-resizer="sw"></div>
+        <div class="absolute top-0 right-0 w-4 h-4 cursor-nesw-resize" data-resizer="ne"></div>
+        <div class="absolute top-0 left-0 w-4 h-4 cursor-nwse-resize" data-resizer="nw"></div>
+    
+        <div class="absolute left-2 top-0 h-2 w-[calc(100%-16px)] cursor-ns-resize" data-drag="top"></div>
+        <div class="absolute bottom-0 left-2 h-2 w-[calc(100%-16px)] cursor-ns-resize" data-drag="bottom"></div>
+        <div class="absolute left-0 top-2 h-[calc(100%-16px)] w-2 cursor-ew-resize" data-drag="left"></div>
+        <div class="absolute right-0 top-2 h-[calc(100%-16px)] w-2 cursor-ew-resize" data-drag="right"></div>
+    </section>
+
+    <section id="projectsWindow" class="absolute flex flex-col hidden w-full h-full overflow-hidden bg-white rounded-t-lg shadow-lg max-w-96 max-h-96">
+        <div id="projectsHeader" class="flex flex-row justify-between px-1 text-white [background:linear-gradient(to_bottom,_#3D8DE9_1%,_#2865E4_35%)]">
+            <div class="flex flex-row gap-x-0.5 p-0.5">
+                <img src="images/projects.png" class="w-6 h-6 mt-2">
+                <div class="mt-2 cursor-default text-start">Projects</div>
+            </div>
+            <div class="flex flex-row gap-x-0.5">
+                <button class="cursor-pointer">
+                    <img src="images/minimize.jpg" class="w-8 h-8">
+                </button>
+                
+                <button class="cursor-pointer">
+                    <img src="images/maximize.jpg" class="w-8 h-8">
+                </button>
+                
+                <button class="cursor-pointer" onclick="closeProjects()">
+                    <img src="images/close.jpg" class="w-8 h-8">
+                </button>
+            </div>
+        </div>
+        
+        <a href="https://github.com/ravenmanalili/Stick-Driftless" class="flex-1 border-4 border-[#2865E4] p-2 text-blue-500 font-bold">Stick-Driftless
+            <div class="font-normal text-black">An e-Commerce site specializing in selling custom made controllers</div>
+        </a>
+        
+        
+    
+        <div class="absolute bottom-0 right-0 w-4 h-4 cursor-nwse-resize" data-resizer="se"></div>
+        <div class="absolute bottom-0 left-0 w-4 h-4 cursor-nesw-resize" data-resizer="sw"></div>
+        <div class="absolute top-0 right-0 w-4 h-4 cursor-nesw-resize" data-resizer="ne"></div>
+        <div class="absolute top-0 left-0 w-4 h-4 cursor-nwse-resize" data-resizer="nw"></div>
+    
+        <div class="absolute left-2 top-0 h-2 w-[calc(100%-16px)] cursor-ns-resize" data-drag="top"></div>
+        <div class="absolute bottom-0 left-2 h-2 w-[calc(100%-16px)] cursor-ns-resize" data-drag="bottom"></div>
+        <div class="absolute left-0 top-2 h-[calc(100%-16px)] w-2 cursor-ew-resize" data-drag="left"></div>
+        <div class="absolute right-0 top-2 h-[calc(100%-16px)] w-2 cursor-ew-resize" data-drag="right"></div>
+    </section>
+
+    <section id="languagesWindow" class="absolute flex flex-col hidden w-full h-full overflow-hidden bg-white rounded-t-lg shadow-lg max-w-96 max-h-96">
+        <div id="languagesHeader" class="flex flex-row justify-between px-1 text-white [background:linear-gradient(to_bottom,_#3D8DE9_1%,_#2865E4_35%)]">
+            <div class="flex flex-row gap-x-0.5 p-0.5">
+                <img src="images/languages.svg" class="w-6 h-6 mt-2">
+                <div class="mt-2 cursor-default text-start">Languages Used</div>
+            </div>
+            <div class="flex flex-row gap-x-0.5">
+                <button class="cursor-pointer">
+                    <img src="images/minimize.jpg" class="w-8 h-8">
+                </button>
+                
+                <button class="cursor-pointer">
+                    <img src="images/maximize.jpg" class="w-8 h-8">
+                </button>
+                
+                <button class="cursor-pointer" onclick="closeLanguages()">
+                    <img src="images/close.jpg" class="w-8 h-8">
+                </button>
+            </div>
+        </div>
+        
+        <div class="flex-1 border-4 border-[#2865E4] p-2 text-black">
+            <div>HTML, CSS, JS</div>
+            <div>PHP</div>
+            <div>PHP Laravel</div>
+            <div>Tailwind CSS</div>
+            <div>MySQL</div>
+        </div>
+    
+        <div class="absolute bottom-0 right-0 w-4 h-4 cursor-nwse-resize" data-resizer="se"></div>
+        <div class="absolute bottom-0 left-0 w-4 h-4 cursor-nesw-resize" data-resizer="sw"></div>
+        <div class="absolute top-0 right-0 w-4 h-4 cursor-nesw-resize" data-resizer="ne"></div>
+        <div class="absolute top-0 left-0 w-4 h-4 cursor-nwse-resize" data-resizer="nw"></div>
+    
+        <div class="absolute left-2 top-0 h-2 w-[calc(100%-16px)] cursor-ns-resize" data-drag="top"></div>
+        <div class="absolute bottom-0 left-2 h-2 w-[calc(100%-16px)] cursor-ns-resize" data-drag="bottom"></div>
+        <div class="absolute left-0 top-2 h-[calc(100%-16px)] w-2 cursor-ew-resize" data-drag="left"></div>
+        <div class="absolute right-0 top-2 h-[calc(100%-16px)] w-2 cursor-ew-resize" data-drag="right"></div>
+    </section>
+    
+    <script>
+
+    function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('timeDisplay').textContent = `${hours}:${minutes}`;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime(); // Initial call to display time immediately
+
+        // const windowEl = document.getElementById("window");
+        // const headerEl = document.getElementById("header");
+        // const resizers = document.querySelectorAll("[data-resizer]");
+        // const dragEdges = document.querySelectorAll("[data-drag]");
+    
+        // let offsetX, offsetY, isDragging = false, isResizing = false, isEdgeDragging = false;
+        // let activeResizer, activeDragEdge;
+    
+        // function centerWindow() {
+        //     windowEl.style.left = `${(window.innerWidth - windowEl.offsetWidth) / 2}px`;
+        //     windowEl.style.top = `${(window.innerHeight - windowEl.offsetHeight) / 2}px`;
+        // }
+        // centerWindow();
+    
+        // headerEl.addEventListener("mousedown", (e) => {
+        //     isDragging = true;
+        //     offsetX = e.clientX - windowEl.offsetLeft;
+        //     offsetY = e.clientY - windowEl.offsetTop;
+        //     e.preventDefault();
+        // });
+    
+        // dragEdges.forEach(edge => {
+        //     edge.addEventListener("mousedown", (e) => {
+        //         isEdgeDragging = true;
+        //         activeDragEdge = e.target.dataset.drag;
+        //         offsetX = e.clientX;
+        //         offsetY = e.clientY;
+        //         e.preventDefault();
+        //     });
+        // });
+    
+        // document.addEventListener("mousemove", (e) => {
+        //     if (isDragging) {
+        //         let newX = e.clientX - offsetX;
+        //         let newY = e.clientY - offsetY;
+        //         newX = Math.max(0, Math.min(window.innerWidth - windowEl.offsetWidth, newX));
+        //         newY = Math.max(0, Math.min(window.innerHeight - windowEl.offsetHeight, newY));
+        //         windowEl.style.left = `${newX}px`;
+        //         windowEl.style.top = `${newY}px`;
+        //     }
+    
+        //     if (isEdgeDragging) {
+        //         let newLeft = windowEl.offsetLeft;
+        //         let newTop = windowEl.offsetTop;
+        //         let newWidth = windowEl.offsetWidth;
+        //         let newHeight = windowEl.offsetHeight;
+    
+        //         if (activeDragEdge === "left") {
+        //             let deltaX = e.clientX - offsetX;
+        //             newWidth -= deltaX;
+        //             newLeft += deltaX;
+        //             offsetX = e.clientX;
+        //         } else if (activeDragEdge === "right") {
+        //             let deltaX = e.clientX - offsetX;
+        //             newWidth += deltaX;
+        //             offsetX = e.clientX;
+        //         } else if (activeDragEdge === "top") {
+        //             let deltaY = e.clientY - offsetY;
+        //             newHeight -= deltaY;
+        //             newTop += deltaY;
+        //             offsetY = e.clientY;
+        //         } else if (activeDragEdge === "bottom") {
+        //             let deltaY = e.clientY - offsetY;
+        //             newHeight += deltaY;
+        //             offsetY = e.clientY;
+        //         }
+    
+        //         windowEl.style.width = `${Math.max(150, newWidth)}px`;
+        //         windowEl.style.height = `${Math.max(100, newHeight)}px`;
+        //         windowEl.style.left = `${newLeft}px`;
+        //         windowEl.style.top = `${newTop}px`;
+        //     }
+    
+        //     if (isResizing) {
+        //         let newWidth = windowEl.offsetWidth;
+        //         let newHeight = windowEl.offsetHeight;
+        //         let newLeft = windowEl.offsetLeft;
+        //         let newTop = windowEl.offsetTop;
+    
+        //         if (activeResizer === "se") {
+        //             newWidth = Math.max(150, e.clientX - windowEl.offsetLeft);
+        //             newHeight = Math.max(100, e.clientY - windowEl.offsetTop);
+        //         } else if (activeResizer === "sw") {
+        //             let deltaX = windowEl.offsetLeft - e.clientX;
+        //             let deltaY = e.clientY - (windowEl.offsetTop + windowEl.offsetHeight);
+        //             newWidth = Math.max(150, windowEl.offsetWidth + deltaX);
+        //             newHeight = Math.max(100, windowEl.offsetHeight + deltaY);
+        //             newLeft = e.clientX;
+        //         } else if (activeResizer === "ne") {
+        //             newWidth = Math.max(150, e.clientX - windowEl.offsetLeft);
+        //             newHeight = Math.max(100, windowEl.offsetHeight - (e.clientY - windowEl.offsetTop));
+        //             newTop = e.clientY;
+        //         } else if (activeResizer === "nw") {
+        //             let deltaX = windowEl.offsetLeft - e.clientX;
+        //             let deltaY = windowEl.offsetTop - e.clientY;
+        //             newWidth = Math.max(150, windowEl.offsetWidth + deltaX);
+        //             newHeight = Math.max(100, windowEl.offsetHeight + deltaY);
+        //             newLeft = e.clientX;
+        //             newTop = e.clientY;
+        //         }
+    
+        //         windowEl.style.width = `${Math.min(window.innerWidth - newLeft, newWidth)}px`;
+        //         windowEl.style.height = `${Math.min(window.innerHeight - newTop, newHeight)}px`;
+        //         windowEl.style.left = `${newLeft}px`;
+        //         windowEl.style.top = `${newTop}px`;
+        //     }
+        // });
+    
+        // document.addEventListener("mouseup", () => {
+        //     isDragging = false;
+        //     isResizing = false;
+        //     isEdgeDragging = false;
+        // });
+    
+        // resizers.forEach(resizer => {
+        //     resizer.addEventListener("mousedown", (e) => {
+        //         isResizing = true;
+        //         activeResizer = e.target.dataset.resizer;
+        //         e.preventDefault();
+        //     });
+        // });
+
+        function toggleStartMenu() {
+            const startButton = document.getElementById("startButton");
+            const startMenu = document.getElementById("startMenu");
+            startButton.classList.toggle('hover:[background:linear-gradient(to_bottom,_#367D36_10%,_#118C11_30%)]');
+            startButton.classList.toggle('[background:linear-gradient(to_bottom,_#367D36_10%,_#118C11_30%)]');
+            startMenu.classList.toggle('hidden');
+            }
+
+        function openAboutMe() {
+            const aboutMeWindow = document.getElementById("aboutMeWindow");
+            aboutMeWindow.classList.remove('hidden');
+        }
+
+        function closeAboutMe() {
+            aboutMeWindow.classList.add('hidden');
+        }
+
+        function openProjects() {
+            const projectsWindow = document.getElementById("projectsWindow");
+            projectsWindow.classList.remove('hidden');
+        }
+
+        function closeProjects() {
+            projectsWindow.classList.add('hidden');
+        }
+
+        function openLanguages() {
+            const languagesWindow = document.getElementById("languagesWindow");
+            languagesWindow.classList.remove('hidden');
+        }
+
+        function closeLanguages() {
+            languagesWindow.classList.add('hidden');
+        }
+        
+    </script>
+    
+</body>
+</html>
